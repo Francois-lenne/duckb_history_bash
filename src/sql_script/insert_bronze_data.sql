@@ -1,3 +1,4 @@
+INSERT INTO bronze_bash
 SELECT 
     REGEXP_REPLACE(history_zsh_unnest.unnest, '^.*: ', '') AS history_zsh,
     t.filename AS file_name,

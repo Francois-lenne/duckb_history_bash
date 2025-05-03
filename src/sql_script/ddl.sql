@@ -10,8 +10,9 @@ CREATE TABLE bronze_bash (
 -- create the silver table
 
 CREATE TABLE silver_bash (
-    id TEXT,
+    extracted_user TEXT,
     bash_command TEXT,
-    date_integration TIMESTAMP
+    execution_order INT,
+    timestamp_command TIMESTAMP,
+    load_timestamp TIMESTAMP
 );
-

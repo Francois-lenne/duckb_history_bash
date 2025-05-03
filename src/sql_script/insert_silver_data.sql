@@ -1,6 +1,14 @@
+
 WITH fresh_data AS (
     SELECT history_zsh, file_name, load_timestamp
     FROM bronze_bash
+    WHERE history_zsh IS NOT NULL
+    /*
+    WHERE load_timestamp > (
+        SELECT MAX(load_timestamp)
+        FROM silver_bash
+    )
+    */
     QUALIFY RANK() OVER (ORDER BY load_timestamp DESC) = 1
 ),
 extract_data AS (
@@ -16,3 +24,5 @@ extract_data AS (
 )
 SELECT *
 FROM extract_data;
+
+
